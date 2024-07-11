@@ -4,7 +4,8 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB, MultinomialNB
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.svm import SVC 
+from sklearn.svm import SVC
+
 
 def run(x_train, y_train, x_test, y_test, clf):
     clf.fit(x_train, y_train)
@@ -13,16 +14,19 @@ def run(x_train, y_train, x_test, y_test, clf):
     print("    score = %0.4f" % clf.score(x_test, y_test))
     print()
 
+
 def main():
     x = np.load("../data/iris/iris_features.npy")
     y = np.load("../data/iris/iris_labels.npy")
-    N = 120 
-    x_train = x[:N]; x_test = x[N:]
-    y_train = y[:N]; y_test = y[N:]
-    xa_train=np.load("../data/iris/iris_train_features_augmented.npy")
-    ya_train=np.load("../data/iris/iris_train_labels_augmented.npy")
-    xa_test =np.load("../data/iris/iris_test_features_augmented.npy")
-    ya_test =np.load("../data/iris/iris_test_labels_augmented.npy")
+    N = 120
+    x_train = x[:N]
+    x_test = x[N:]
+    y_train = y[:N]
+    y_test = y[N:]
+    xa_train = np.load("../data/iris/iris_train_features_augmented.npy")
+    ya_train = np.load("../data/iris/iris_train_labels_augmented.npy")
+    xa_test = np.load("../data/iris/iris_test_features_augmented.npy")
+    ya_test = np.load("../data/iris/iris_test_labels_augmented.npy")
 
     print("Nearest centroid:")
     run(x_train, y_train, x_test, y_test, NearestCentroid())
@@ -46,5 +50,5 @@ def main():
     print("SVM (RBF, C=1.0, gamma=0.001, original)")
     run(x_train, y_train, x_test, y_test, SVC(kernel="rbf", C=1.0, gamma=0.001))
 
-main()
 
+main()

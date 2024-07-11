@@ -12,22 +12,22 @@ import time
 import numpy as np
 from sklearn.neighbors.nearest_centroid import NearestCentroid
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.naive_bayes import GaussianNB, MultinomialNB
+from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import LinearSVC
-from sklearn import decomposition
 
-def tally_predictions(clf, x, y): 
+
+def tally_predictions(clf, x, y):
     p = clf.predict(x)
-    score = clf.score(x,y)
-    tp = tn = fp = fn = 0 
+    score = clf.score(x, y)
+    tp = tn = fp = fn = 0
     for i in range(len(y)):
-        if (p[i] == 0) and (y[i] == 0): 
+        if (p[i] == 0) and (y[i] == 0):
             tn += 1
-        elif (p[i] == 0) and (y[i] == 1): 
+        elif (p[i] == 0) and (y[i] == 1):
             fn += 1
-        elif (p[i] == 1) and (y[i] == 0): 
+        elif (p[i] == 1) and (y[i] == 0):
             fp += 1
         else:
             tp += 1
@@ -44,35 +44,38 @@ def basic_metrics(tally):
         "PPV": tp / (tp + fp),
         "NPV": tn / (tn + fn),
         "FPR": fp / (fp + tn),
-        "FNR": fn / (fn + tp)
+        "FNR": fn / (fn + tp),
     }
 
 
 from math import sqrt
+
+
 def advanced_metrics(tally, m):
     """Use the tallies to calculate more advanced metrics"""
 
     tp, tn, fp, fn, _ = tally
-    n = tp+tn+fp+fn
+    n = tp + tn + fp + fn
 
-    po = (tp+tn)/n
-    pe = (tp+fn)*(tp+fp)/n**2 + (tn+fp)*(tn+fn)/n**2
+    po = (tp + tn) / n
+    pe = (tp + fn) * (tp + fp) / n**2 + (tn + fp) * (tn + fn) / n**2
 
     return {
-        "F1": 2.0*m["PPV"]*m["TPR"] / (m["PPV"] + m["TPR"]),
-        "MCC": (tp*tn - fp*fn) / sqrt((tp+fp)*(tp+fn)*(tn+fp)*(tn+fn)),
+        "F1": 2.0 * m["PPV"] * m["TPR"] / (m["PPV"] + m["TPR"]),
+        "MCC": (tp * tn - fp * fn)
+        / sqrt((tp + fp) * (tp + fn) * (tn + fp) * (tn + fn)),
         "kappa": (po - pe) / (1.0 - pe),
         "informedness": m["TPR"] + m["TNR"] - 1.0,
-        "markedness": m["PPV"] + m["NPV"] - 1.0
+        "markedness": m["PPV"] + m["NPV"] - 1.0,
     }
 
 
-def pp(t,m,b):
+def pp(t, m, b):
     """Print the metrics"""
 
     tp, tn, fp, fn, score = t
-    print("    TP=%5d  FP=%5d" % (tp,fp))
-    print("    FN=%5d  TN=%5d, score=%0.4f" % (fn,tn, score))
+    print("    TP=%5d  FP=%5d" % (tp, fp))
+    print("    FN=%5d  TN=%5d, score=%0.4f" % (fn, tn, score))
     print()
     print("    TPR=%0.4f  TNR=%0.4f" % (m["TPR"], m["TNR"]))
     print("    PPV=%0.4f  NPV=%0.4f" % (m["PPV"], m["NPV"]))
@@ -146,14 +149,14 @@ def main():
     xtst3 = x_test[i]
     i = np.where(y_test == 5)[0]
     xtst5 = x_test[i]
-    xtrn = np.concatenate((xtrn3,xtrn5))
-    xtst = np.concatenate((xtst3,xtst5))
-    ytrn = np.zeros(len(xtrn3)+len(xtrn5))
-    ytrn[:len(xtrn3)] = 0
-    ytrn[len(xtrn3):] = 1
-    ytst = np.zeros(len(xtst3)+len(xtst5))
-    ytst[:len(xtst3)] = 0
-    ytst[len(xtst3):] = 1
+    xtrn = np.concatenate((xtrn3, xtrn5))
+    xtst = np.concatenate((xtst3, xtst5))
+    ytrn = np.zeros(len(xtrn3) + len(xtrn5))
+    ytrn[: len(xtrn3)] = 0
+    ytrn[len(xtrn3) :] = 1
+    ytst = np.zeros(len(xtst3) + len(xtst5))
+    ytst[: len(xtst3)] = 0
+    ytst[len(xtst3) :] = 1
 
     np.random.seed(12345)  #  make reproducible
     i = np.argsort(np.random.random(size=len(ytrn)))
@@ -167,4 +170,3 @@ def main():
 
 
 main()
-

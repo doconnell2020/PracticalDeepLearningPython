@@ -10,7 +10,6 @@ n = len(os.listdir("images"))
 
 for i in range(n):
     f = "images/image_%04d.png" % i
-    im = np.array(Image.open(f))/255.0
-    p = model.predict(im[np.newaxis,:,:,np.newaxis])
-    np.save("results/results_%04d.npy" % i, p[0,:,:,:])
-
+    im = np.array(Image.open(f)) / 255.0
+    p = model.predict(im[np.newaxis, :, :, np.newaxis])
+    np.save("results/results_%04d.npy" % i, p[0, :, :, :])

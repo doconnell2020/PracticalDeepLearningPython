@@ -11,10 +11,11 @@
 import numpy as np
 from sklearn.neighbors import NearestCentroid
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.naive_bayes import GaussianNB, MultinomialNB
+from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
+
 
 def run(x_train, y_train, x_test, y_test, clf):
     """Train and test"""
@@ -38,8 +39,10 @@ def main():
     np.random.seed()
 
     N = 455
-    x_train = x[:N];  x_test = x[N:]
-    y_train = y[:N];  y_test = y[N:]
+    x_train = x[:N]
+    x_test = x[N:]
+    y_train = y[:N]
+    y_test = y[N:]
 
     #  Nearest centroid
     print("Nearest centroid:")
@@ -75,4 +78,3 @@ def main():
 
 
 main()
-

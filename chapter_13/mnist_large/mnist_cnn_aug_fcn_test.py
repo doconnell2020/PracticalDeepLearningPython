@@ -14,9 +14,10 @@ import numpy as np
 from keras.models import load_model
 from PIL import Image
 
+
 def main():
     #  Test individual MNIST digits
-    x_test = np.load("../../../../data/mnist/mnist_test_images.npy")/255.0
+    x_test = np.load("../../../../data/mnist/mnist_test_images.npy") / 255.0
     y_test = np.load("../../../../data/mnist/mnist_test_labels.npy")
 
     #  Random subset
@@ -30,14 +31,14 @@ def main():
     nc = nw = 0.0
 
     for i in idx:
-        p = model.predict(x_test[i][np.newaxis,:,:,np.newaxis])
+        p = model.predict(x_test[i][np.newaxis, :, :, np.newaxis])
         c = np.argmax(p)
-        if (c == y_test[i]):
+        if c == y_test[i]:
             nc += 1
         else:
             nw += 1
     print()
-    print("Single MNIST digits, n=%d, accuracy = %0.2f%%" % (N, 100*nc/N))
+    print("Single MNIST digits, n=%d, accuracy = %0.2f%%" % (N, 100 * nc / N))
     print()
 
     #  Test larger digit images and store the results
@@ -48,12 +49,11 @@ def main():
     st = time.time()
     for i in range(n):
         f = "images/image_%04d.png" % i
-        im = np.array(Image.open(f))/255.0
-        p = model.predict(im[np.newaxis,:,:,np.newaxis])
-        np.save("results_aug/results_%04d.npy" % i, p[0,:,:,:])
-    print("done, time = %0.3f s" % (time.time()-st))
+        im = np.array(Image.open(f)) / 255.0
+        p = model.predict(im[np.newaxis, :, :, np.newaxis])
+        np.save("results_aug/results_%04d.npy" % i, p[0, :, :, :])
+    print("done, time = %0.3f s" % (time.time() - st))
     print()
 
 
 main()
-

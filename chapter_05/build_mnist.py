@@ -1,5 +1,4 @@
 import numpy as np
-from tensorflow import keras
 from keras.datasets import mnist
 
 (xtrn, ytrn), (xtst, ytst) = mnist.load_data()

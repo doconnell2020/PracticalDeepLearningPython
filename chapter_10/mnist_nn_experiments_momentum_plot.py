@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pylab as plt
 
+
 def main():
     d0 = np.load("mnist_nn_experiments_momentum/val_error_0.00.npy")
     d1 = np.load("mnist_nn_experiments_momentum/val_error_0.30.npy")
@@ -17,7 +18,7 @@ def main():
     plt.plot(d5, color="m", linewidth=1, linestyle="-")
     plt.xlabel("Epochs")
     plt.ylabel("Test Error")
-    plt.ylim((0.05,0.1))
+    plt.ylim((0.05, 0.1))
     plt.tight_layout()
     plt.savefig("mnist_nn_experiments_momentum_plot.pdf", type="pdf", dpi=600)
     plt.savefig("mnist_nn_experiments_momentum_plot.png", type="png", dpi=600)
@@ -25,4 +26,3 @@ def main():
 
 
 main()
-

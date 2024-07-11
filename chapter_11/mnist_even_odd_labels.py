@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def main():
     old = np.load("../data/mnist/mnist_train_labels.npy")
     new = np.zeros(len(old), dtype="uint8")
@@ -15,4 +16,3 @@ def main():
 
 
 main()
-

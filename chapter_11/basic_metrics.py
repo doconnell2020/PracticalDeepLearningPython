@@ -6,6 +6,5 @@ def basic_metrics(tally):
         "PPV": tp / (tp + fp),
         "NPV": tn / (tn + fn),
         "FPR": fp / (fp + tn),
-        "FNR": fn / (fn + tp)
+        "FNR": fn / (fn + tp),
     }
-

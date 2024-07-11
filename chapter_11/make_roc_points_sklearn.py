@@ -9,15 +9,15 @@
 #
 ###############################################################
 
-import os
 import sys
 import numpy as np
 import matplotlib.pylab as plt
 
 from sklearn.metrics import roc_auc_score, roc_curve
 
+
 def main():
-    if (len(sys.argv) == 1):
+    if len(sys.argv) == 1:
         print()
         print("make_roc_points_sklearn <labels> <probs> <plot>")
         print()
@@ -31,13 +31,13 @@ def main():
     probs = np.load(sys.argv[2])
     pname = sys.argv[3]
 
-    auc = roc_auc_score(labels, probs[:,1])
-    roc = roc_curve(labels, probs[:,1])
+    auc = roc_auc_score(labels, probs[:, 1])
+    roc = roc_curve(labels, probs[:, 1])
     print("AUC = %0.6f" % auc)
     print()
 
-    plt.plot(roc[0], roc[1], color='r')
-    plt.plot([0,1],[0,1], color='k', linestyle=':')
+    plt.plot(roc[0], roc[1], color="r")
+    plt.plot([0, 1], [0, 1], color="k", linestyle=":")
     plt.xlabel("FPR")
     plt.ylabel("TPR")
     plt.tight_layout(pad=0, w_pad=0, h_pad=0)
@@ -46,4 +46,3 @@ def main():
 
 
 main()
-
