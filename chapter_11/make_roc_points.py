@@ -10,9 +10,10 @@
 ###############################################################
 
 import sys
-import numpy as np
-import matplotlib.pylab as plt
+from math import sqrt
 
+import matplotlib.pylab as plt
+import numpy as np
 from sklearn.metrics import roc_auc_score
 
 
@@ -30,7 +31,6 @@ def basic_metrics(tally):
     }
 
 
-from math import sqrt
 
 
 def advanced_metrics(tally, m):

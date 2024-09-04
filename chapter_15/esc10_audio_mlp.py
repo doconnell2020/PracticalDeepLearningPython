@@ -9,9 +9,9 @@
 ################################################################
 
 import keras
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten
 import numpy as np
+from keras.layers import Dense, Dropout, Flatten
+from keras.models import Sequential
 
 batch_size = 32
 num_classes = 10

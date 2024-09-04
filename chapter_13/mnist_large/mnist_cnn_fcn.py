@@ -10,9 +10,8 @@
 #
 ################################################################
 
+from tensorflow.keras.layers import Conv2D, Dropout, MaxPooling2D
 from tensorflow.keras.models import Sequential, load_model
-from tensorflow.keras.layers import Dropout
-from tensorflow.keras.layers import Conv2D, MaxPooling2D
 
 #  Load the weights from the base model
 weights = load_model("mnist_cnn_base_model.h5").get_weights()

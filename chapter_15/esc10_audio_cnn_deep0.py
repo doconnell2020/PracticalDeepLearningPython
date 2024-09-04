@@ -9,11 +9,11 @@
 ################################################################
 
 import sys
+
 import keras
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten
-from keras.layers import Conv1D, MaxPooling1D
 import numpy as np
+from keras.layers import Conv1D, Dense, Dropout, Flatten, MaxPooling1D
+from keras.models import Sequential
 
 batch_size = 32
 num_classes = 10

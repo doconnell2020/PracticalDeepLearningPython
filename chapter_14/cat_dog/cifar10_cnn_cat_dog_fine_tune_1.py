@@ -9,10 +9,10 @@
 ################################################################
 
 import keras
-from keras.models import load_model
-from keras.layers import Dense
-from keras import backend as K
 import numpy as np
+from keras import backend as K
+from keras.layers import Dense
+from keras.models import load_model
 
 batch_size = 64
 num_classes = 2

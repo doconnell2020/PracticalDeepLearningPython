@@ -9,10 +9,9 @@
 ################################################################
 
 import keras
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten
-from keras.layers import Conv2D, MaxPooling2D
 import numpy as np
+from keras.layers import Conv2D, Dense, Dropout, Flatten, MaxPooling2D
+from keras.models import Sequential
 
 batch_size = 16
 num_classes = 10

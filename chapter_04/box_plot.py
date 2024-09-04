@@ -1,5 +1,5 @@
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
 d = [
     [0.6930, -1.1259, -1.5318, 0.9525, 1.1824],

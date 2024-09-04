@@ -1,5 +1,5 @@
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
 with open("../data/breast/wdbc.data") as f:
     lines = [i[:-1] for i in f.readlines() if i != ""]

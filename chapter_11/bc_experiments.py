@@ -9,12 +9,11 @@
 ###############################################################
 
 import numpy as np
-from sklearn.neighbors import NearestCentroid
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.naive_bayes import GaussianNB
-from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.neighbors import KNeighborsClassifier, NearestCentroid
 from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
 
 
 def run(x_train, y_train, x_test, y_test, clf):

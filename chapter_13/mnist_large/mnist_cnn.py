@@ -9,11 +9,11 @@
 ################################################################
 
 import tensorflow.keras as keras
-from tensorflow.keras.datasets import mnist
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout, Flatten
-from tensorflow.keras.layers import Conv2D, MaxPooling2D
 from tensorflow.keras import backend as K
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.layers import (Conv2D, Dense, Dropout, Flatten,
+                                     MaxPooling2D)
+from tensorflow.keras.models import Sequential
 
 batch_size = 128
 num_classes = 10

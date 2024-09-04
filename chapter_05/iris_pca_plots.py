@@ -1,5 +1,5 @@
-import numpy as np
 import matplotlib.pylab as plt
+import numpy as np
 from sklearn import decomposition
 
 x = np.load("../data/iris/iris_features.npy")[:, :2]

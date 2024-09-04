@@ -1,9 +1,10 @@
 import time
+
 import numpy as np
-from sklearn.naive_bayes import GaussianNB
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.svm import LinearSVC
 from sklearn import decomposition
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import LinearSVC
 
 
 def run(x_train, y_train, x_test, y_test, clf):

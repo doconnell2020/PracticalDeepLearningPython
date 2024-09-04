@@ -7,13 +7,12 @@
 ################################################################
 
 import numpy as np
-from tensorflow.keras.models import load_model
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier, NearestCentroid
+from sklearn.svm import LinearSVC
 from tensorflow.keras import backend as K
 from tensorflow.keras.datasets import mnist
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.neighbors import NearestCentroid
-from sklearn.svm import LinearSVC
+from tensorflow.keras.models import load_model
 
 
 def conf_mat(clf, x, y):

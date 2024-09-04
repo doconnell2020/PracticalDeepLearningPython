@@ -1,6 +1,7 @@
-import numpy as np
-import time
 import random
+import time
+
+import numpy as np
 
 n = 1000000
 a = [random.random() for i in range(n)]

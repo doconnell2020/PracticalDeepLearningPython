@@ -1,4 +1,5 @@
 import sys
+
 import numpy as np
 
 p0 = np.load("prob_run0.npy")

@@ -9,13 +9,15 @@
 ###############################################################
 
 import time
+from math import sqrt
+
 import numpy as np
-from sklearn.neighbors.nearest_centroid import NearestCentroid
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.naive_bayes import GaussianNB
-from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neighbors.nearest_centroid import NearestCentroid
 from sklearn.svm import LinearSVC
+from sklearn.tree import DecisionTreeClassifier
 
 
 def tally_predictions(clf, x, y):
@@ -48,7 +50,6 @@ def basic_metrics(tally):
     }
 
 
-from math import sqrt
 
 
 def advanced_metrics(tally, m):

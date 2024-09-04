@@ -1,5 +1,5 @@
-import numpy as np
 import matplotlib.pylab as plt
+import numpy as np
 
 
 def smooth(x, window_len=11, window="hanning"):

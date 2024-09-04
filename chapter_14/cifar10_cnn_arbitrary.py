@@ -9,13 +9,13 @@
 #
 ################################################################
 
-import keras
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten
-from keras.layers import Conv2D, MaxPooling2D
-from keras import backend as K
-import numpy as np
 import sys
+
+import keras
+import numpy as np
+from keras import backend as K
+from keras.layers import Conv2D, Dense, Dropout, Flatten, MaxPooling2D
+from keras.models import Sequential
 
 if len(sys.argv) == 1:
     print("cifar10_cnn_arbitrary <train> <test> <model>")

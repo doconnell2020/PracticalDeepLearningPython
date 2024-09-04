@@ -9,8 +9,9 @@
 #
 ################################################################
 
-import numpy as np
 import sys
+
+import numpy as np
 
 if len(sys.argv) == 1:
     print("make_label_files <class1> <train> <test>")

@@ -8,8 +8,9 @@
 #
 ################################################################
 
-import numpy as np
 import random
+
+import numpy as np
 
 
 def shifted(im):

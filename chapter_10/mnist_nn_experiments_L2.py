@@ -7,8 +7,9 @@
 ###############################################################
 
 import os
-import numpy as np
+
 import matplotlib.pylab as plt
+import numpy as np
 from sklearn.neural_network import MLPClassifier
 
 

@@ -1,12 +1,12 @@
 import time
+
 import numpy as np
-from sklearn.neighbors import NearestCentroid
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.naive_bayes import GaussianNB, MultinomialNB
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.svm import LinearSVC
 from sklearn import decomposition
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB, MultinomialNB
+from sklearn.neighbors import KNeighborsClassifier, NearestCentroid
+from sklearn.svm import LinearSVC
+from sklearn.tree import DecisionTreeClassifier
 
 MODELS = [
     NearestCentroid(),
