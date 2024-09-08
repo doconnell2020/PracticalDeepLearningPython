@@ -2,7 +2,7 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import GaussianNB, MultinomialNB
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.neighbors.nearest_centroid import NearestCentroid
+from sklearn.neighbors import NearestCentroid
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 

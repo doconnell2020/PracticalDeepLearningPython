@@ -5,7 +5,7 @@ def centroids(x, y):
     c0 = x[np.where(y == 0)].mean(axis=0)
     c1 = x[np.where(y == 1)].mean(axis=0)
     c2 = x[np.where(y == 2)].mean(axis=0)
-    return [c0, c1, c2]
+    return c0, c1, c2
 
 
 def predict(c0, c1, c2, x):
@@ -33,9 +33,9 @@ def main():
     nc = len(np.where(p == y_test)[0])
     nw = len(np.where(p != y_test)[0])
     acc = float(nc) / (float(nc) + float(nw))
-    print("predicted:", p)
-    print("actual   :", y_test)
-    print("test accuracy = %0.4f" % acc)
+    print(f"predicted:{p}")
+    print(f"actual   :{y_test}")
+    print(f"test accuracy = {acc:.4f}")
 
 
 main()

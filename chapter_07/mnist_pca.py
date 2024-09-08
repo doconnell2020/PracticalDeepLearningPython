@@ -8,6 +8,7 @@ from sklearn.svm import LinearSVC
 
 
 def run(x_train, y_train, x_test, y_test, clf):
+    print(f"Running estimator {clf}.")
     s = time.time()
     clf.fit(x_train, y_train)
     e_train = time.time() - s

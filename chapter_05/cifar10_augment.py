@@ -19,8 +19,8 @@ def augment(im, dim):
 
 
 def main():
-    x = np.load("../../../data/cifar10/cifar10_train_images.npy")
-    y = np.load("../../../data/cifar10/cifar10_train_labels.npy")
+    x = np.load("../data/cifar10/cifar10_train_images.npy")
+    y = np.load("../data/cifar10/cifar10_train_labels.npy")
     factor = 10
     dim = 28
     z = (32 - dim) / 2
@@ -40,16 +40,16 @@ def main():
     idx = np.argsort(np.random.random(newx.shape[0]))
     newx = newx[idx]
     newy = newy[idx]
-    np.save("cifar10_aug_train_images.npy", newx)
-    np.save("cifar10_aug_train_labels.npy", newy)
+    np.save("../data/cifar10/cifar10_aug_train_images.npy", newx)
+    np.save("../data/cifar10/cifar10_aug_train_labels.npy", newy)
 
-    x = np.load("../../../data/cifar10/cifar10_test_images.npy")
+    x = np.load("../data/cifar10/cifar10_test_images.npy")
     newx = np.zeros((x.shape[0], dim, dim, 3), dtype="uint8")
     for i in range(x.shape[0]):
         im = Image.fromarray(x[i, :])
         im = im.crop((z, z, 32 - z, 32 - z))
         newx[i, ...] = np.array(im)
-    np.save("cifar10_aug_test_images.npy", newx)
+    np.save("../data/cifar10/cifar10_aug_test_images.npy", newx)
 
 
 main()

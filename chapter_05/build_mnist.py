@@ -1,3 +1,7 @@
+import warnings
+
+warnings.filterwarnings("ignore")
+
 import numpy as np
 from keras.datasets import mnist
 
