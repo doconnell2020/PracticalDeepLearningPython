@@ -8,13 +8,26 @@ from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 
 
+MODELS = [
+    NearestCentroid(),
+    KNeighborsClassifier(n_neighbors=3),
+    GaussianNB(),
+    MultinomialNB(),
+    DecisionTreeClassifier(),
+    RandomForestClassifier(n_estimators=5),
+    SVC(kernel="linear", C=1.0),
+    SVC(kernel="rbf", C=1.0, gamma=0.25),
+    SVC(kernel="rbf", C=1.0, gamma=0.001),
+    SVC(kernel="rbf", C=1.0, gamma=0.001),
+]
+
+
 def run(x_train, y_train, x_test, y_test, clf):
     with parallel_backend("threading", n_jobs=-1):
         clf.fit(x_train, y_train)
-        print(f"    predictions  :{clf.predict(x_test)}")
-        print(f"    actual labels:{y_test}")
-        print(f"    score = {clf.score(x_test, y_test):.4f}")
-        print("\n")
+        print(f"\tpredictions  :{clf.predict(x_test)}")
+        print(f"\tactual labels:{y_test}")
+        print(f"\tscore        :{clf.score(x_test, y_test):.4f}")
 
 
 def main():
@@ -29,28 +42,14 @@ def main():
     ya_train = np.load("../data/iris/iris_train_labels_augmented.npy")
     xa_test = np.load("../data/iris/iris_test_features_augmented.npy")
     ya_test = np.load("../data/iris/iris_test_labels_augmented.npy")
-
-    print("Nearest centroid:")
-    run(x_train, y_train, x_test, y_test, NearestCentroid())
-    print("k-NN classifier (k=3):")
-    run(x_train, y_train, x_test, y_test, KNeighborsClassifier(n_neighbors=3))
-    print("Naive Bayes classifier (Gaussian):")
-    run(x_train, y_train, x_test, y_test, GaussianNB())
-    print("Naive Bayes classifier (Multinomial):")
-    run(x_train, y_train, x_test, y_test, MultinomialNB())
-    print("Decision Tree classifier:")
-    run(x_train, y_train, x_test, y_test, DecisionTreeClassifier())
-    print("Random Forest classifier (estimators=5):")
-    run(xa_train, ya_train, xa_test, ya_test, RandomForestClassifier(n_estimators=5))
-
-    print("SVM (linear, C=1.0):")
-    run(xa_train, ya_train, xa_test, ya_test, SVC(kernel="linear", C=1.0))
-    print("SVM (RBF, C=1.0, gamma=0.25):")
-    run(xa_train, ya_train, xa_test, ya_test, SVC(kernel="rbf", C=1.0, gamma=0.25))
-    print("SVM (RBF, C=1.0, gamma=0.001, augmented)")
-    run(xa_train, ya_train, xa_test, ya_test, SVC(kernel="rbf", C=1.0, gamma=0.001))
-    print("SVM (RBF, C=1.0, gamma=0.001, original)")
-    run(x_train, y_train, x_test, y_test, SVC(kernel="rbf", C=1.0, gamma=0.001))
+    for model in MODELS[:5]:
+        print(f"{model}")
+        run(x_train, y_train, x_test, y_test, model)
+    print("Starting augmented data:\n")
+    for model in MODELS[5:]:
+        print(f"{model}:")
+        run(xa_train, ya_train, xa_test, ya_test, model)
 
 
-main()
+if __name__ == "__main__":
+    main()
