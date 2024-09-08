@@ -1,3 +1,4 @@
+from joblib import parallel_backend
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import GaussianNB, MultinomialNB
@@ -8,11 +9,12 @@ from sklearn.tree import DecisionTreeClassifier
 
 
 def run(x_train, y_train, x_test, y_test, clf):
-    clf.fit(x_train, y_train)
-    print("    predictions  :", clf.predict(x_test))
-    print("    actual labels:", y_test)
-    print("    score = %0.4f" % clf.score(x_test, y_test))
-    print()
+    with parallel_backend("threading", n_jobs=-1):
+        clf.fit(x_train, y_train)
+        print(f"    predictions  :{clf.predict(x_test)}")
+        print(f"    actual labels:{y_test}")
+        print(f"    score = {clf.score(x_test, y_test):.4f}")
+        print("\n")
 
 
 def main():
